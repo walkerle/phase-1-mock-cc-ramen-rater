@@ -39,7 +39,7 @@ function renderStores(data) {
     })
 
 }
-
+//Test
 function renderOneStore(data) {
     // console.log(data);
     rImg.src = data.image;
