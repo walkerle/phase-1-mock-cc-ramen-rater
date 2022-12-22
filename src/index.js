@@ -1,5 +1,6 @@
 // Global
 const URL ='http://localhost:3000/ramens'
+let selectedRamen // Advanced
 
 // DOM Selectors
 const rMenu = document.querySelector('#ramen-menu')
@@ -9,6 +10,7 @@ const rRestaurant = document.querySelector('.restaurant')
 const rRating = document.querySelector('#rating-display')
 const rComment = document.querySelector('#comment-display')
 const form = document.querySelector('#new-ramen')
+const editForm = document.querySelector('#edit-ramen') // Advanced
 
 // Fetch Functions
 function getStores(url) {
@@ -30,11 +32,23 @@ function renderStores(data) {
         // console.log(store.src);
         // console.log(element.image);
         store.src = element.image;
-        rMenu.append(store);
+
+        const deleteBtn = document.createElement('button')
+        const container = document.createElement('div')
+        deleteBtn.textContent = " X "
+        container.id = "container"
+
+        container.append(store, deleteBtn)
+        rMenu.append(container);
 
         store.addEventListener('click', e => {
             // console.log('I was clicked')
             renderOneStore(element)
+        })
+
+        deleteBtn.addEventListener('click', e =>{
+            // console.log('deleteRamen func invoked');
+            container.remove();
         })
     })
 
@@ -54,6 +68,8 @@ function renderOneStore(data) {
 // Event Listeners
 form.addEventListener('submit', addRamen)
 
+editForm.addEventListener('submit', updateRamen)
+
 // Event Handlers
 function addRamen(e) {
     e.preventDefault()
@@ -64,7 +80,27 @@ function addRamen(e) {
     // console.log(e.target.image.value);
     nRamen.src = e.target.image.value
     rMenu.append(nRamen);
+
+    // paste image to center
+    rImg.src = e.target.image.value;
+    rName.textContent = e.target.name.value;
+    rRestaurant.textContent = e.target.restaurant.value;
+    rRating.textContent = parseInt(e.target.rating.value);
+    rComment.textContent = e.target['new-comment'].value;
+    // console.log(rComment.textContent)
+    // console.log(e.target)
+    // console.log(e.target['new-comment'])
+    // console.log(e.target['new-comment'].value)
+    
     form.reset()
+}
+
+function updateRamen(e) {
+    e.preventDefault();
+    // console.log('updateRamen func invoked');
+    rRating.textContent = parseInt(e.target.rating.value);
+    rComment.textContent = e.target['new-comment'].value;
+    editForm.reset();
 }
 
 // Initializers

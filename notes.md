@@ -3,8 +3,8 @@
 [x] fetch data from json
 [x] add all ramen images <img> to #ramen-menu <div>.
 [x] click event to display ramen detail. Properties? see json
-[] create new ramen (<form>?)
-[] add to #ramen-menu <div> (submit event listener?)
+[x] create new ramen (<form>?)
+[x] add to #ramen-menu <div> (submit event listener?)
 
 # Data Shape
 [
@@ -19,7 +19,7 @@
 
 # Advanced Deliverables
 [x] see details of first ramen on page load
-[] update rating and comment of ramen by form submit
+[x] update rating and comment of ramen by form submit
 <form id="edit-ramen">
   <h4>Update the Featured Ramen</h4>
   <label for="rating">Rating: </label>
@@ -28,7 +28,7 @@
   <textarea name="new-comment" id="new-comment"></textarea>
   <input type="submit" value="Update" />
 </form>
-[] delete ramen (.remove) (Not fetch method: DELETE)
+[x] delete ramen (.remove) (Not fetch method: DELETE)
 
 # Extra Advanced Deliverables
 
